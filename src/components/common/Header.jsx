@@ -1,28 +1,31 @@
 import { FaYoutube, FaInstagramSquare, FaEnvelope } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+// React의 Link 컴포넌트를 활용해서 메뉴이동처리 하면
+// 불필요한 서버요청 없이 미리 한번에 불러온 컴포넌트를 실시간으로 클라이언트 단에서 변경처리 가능
 
 export default function Header() {
 	return (
 		<header className='header'>
 			<h1>
-				<a href='/'>ALPACO</a>
+				<Link to={'/'}>ALPACO</Link>
 			</h1>
 
 			<nav>
 				<ul className='gnb'>
 					<li>
-						<a href='/members'>MEMBERS</a>
+						<Link to={'/members'}>MEMBERS</Link>
 					</li>
 					<li>
-						<a href='/gallery'>GALLERY</a>
+						<Link to={'/gallery'}>GALLERY</Link>
 					</li>
 					<li>
-						<a href='/youtube'>YOUTUBE</a>
+						<Link to={'/youtube'}>YOUTUBE</Link>
 					</li>
 					<li>
-						<a href='/contact'>CONTACT</a>
+						<Link to={'/contact'}>CONTACT</Link>
 					</li>
 					<li>
-						<a href='/posts'>POSTS</a>
+						<Link to={'/posts'}>POSTS</Link>
 					</li>
 				</ul>
 
