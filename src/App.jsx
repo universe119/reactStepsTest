@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom';
 import Footer from './components/common/Footer';
 import Header from './components/common/Header';
 import Home from './components/main/Home';
@@ -12,12 +13,15 @@ export default function App() {
 		<>
 			<Header />
 
-			<Home />
-			<Members />
-			<Gallery />
-			<Youtube />
-			<Contact />
-			<Posts />
+			<Routes>
+				<Route path='/' element={<Home />} />
+				<Route path='/members' element={<Members />} />
+				<Route path='/gallery' element={<Gallery />} />
+				<Route path='/youtube' element={<Youtube />} />
+				<Route path='/contact' element={<Contact />} />
+				<Route path='/posts' element={<Posts />} />
+				{/* <Route path="/join" element={<Join />} /> */}
+			</Routes>
 
 			<Footer />
 		</>
