@@ -1,22 +1,26 @@
+// 컴포넌트 함수
+// JSX라는 리액트만의 문법체계 (돔생성 스크립트 구문을 HTML형식을 본따 만든 템플릿)
+// 컴포넌트 함수 생성 규칙
+// 1. 무조건 이름 대문자(대문자가 아닌 소문자로 작성하면 일반 태그로 인식해서 오류발생)
+// 2. JSX 반환
+// 3. export문으로 내보냄
+// 4. 하나의 컴포넌트 함수는 단일 요소만 반환 가능
+// 5. 결국은 자바스크립트이기 때문에 JS예약어는 사용불가(class)
+// 6. 컴포넌트 호출은 먼저 import문으로 해당 함수명 가져온뒤 호출
+// 7. 컴포넌트 호출 방식 <컴포넌트함수명 />
+// 8. 만약 불필요한 wrapping요소 없이 그룹화 하고 싶을때(<></>) fragment로 감싸줌
 function App() {
 
   return (
-    <div>
-      
-      <h1 className="abc"
-        // className="abc"
-        // : React에서는 class 대신 className을 사용하여 CSS 클래스를 지정합니다. 
-        // abc라는 클래스를 지정하고 있습니다.
-        style={{color: 'red'}}
-        // style={{color: 'red'}}
-        // : 인라인 스타일을 적용하고 있으며, 
-        // JSX에서 스타일을 지정할 때는 객체로 지정합니다. 
-        // 이 객체는 JavaScript의 스타일 속성을 따릅니다. 
-        // 여기서는 텍스트의 색상을 빨간색으로 설정했습니다.
-        >
-        Hello html태그 안이래
-      </h1>
-    </div>
+      <>
+      {/* class를 적용할때는 className으로 써야함 아니면 에러가 남 */}
+        <h1 className="abc">Hello</h1>
+        <ul>
+          <li>list1</li>
+          <li>list2</li>
+          <li>list3</li>
+        </ul>
+      </>
   );
 }
 
