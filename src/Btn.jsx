@@ -5,12 +5,12 @@
 function BtnA() {
   return (
     <div className="btnA">BtnA</div>
-  )
+  );
 }
 function BtnB() {
   return (
     <div className="btnB">BtnB</div>
-  )
+  );
 }
-
-export {BtnA, BtnB}
+//하나의 jsx파일에서 복수개의 컴포넌트함수를 export 가능
+export {BtnA, BtnB};
