@@ -1,8 +1,13 @@
-export default function App() {
+import Footer from "./components/common/Footer";
+import Header from "./components/common/Header";
+import Home from "./components/main/Home";
 
+export default function App() {
   return (
-      <>
-        <h1 className="tit">Title</h1>
-      </>
+    <>
+      <Header/>
+      <Home/>
+      <Footer/>
+    </>
   );
 }
