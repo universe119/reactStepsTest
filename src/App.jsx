@@ -2,7 +2,7 @@ import Title from "./Title";
 import List from "./List";
 import {BtnA, BtnB} from './Btn'
 
-function App() {
+export default function App() {
 
   return (
       <>
@@ -14,5 +14,3 @@ function App() {
       </>
   );
 }
-
-export default App;
