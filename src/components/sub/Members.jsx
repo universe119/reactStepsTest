@@ -1,11 +1,9 @@
-import Title from "../common/Title";
+import Layout from "../common/Layout";
 
 export default function Members() {
 	return (
-		<main className='members'>
-			<Title>
-				MEMBERS
-			</Title>
-		</main>
+		<Layout title={"MEMBERS"}>
+			<p>Members Page Contents Come Here.</p>
+		</Layout>
 	);
 }
