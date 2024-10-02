@@ -1,5 +1,6 @@
 import Layout from "../common/Layout";
 import memberData from "../../data/memberData";
+import Pic from "../common/Pic";
 
 export default function Members() {
 	return (
@@ -11,7 +12,7 @@ export default function Members() {
 					<p>{memberData[0].position}</p>
 				</div>
 				<div className='pic'>
-					<img src={"/" + memberData[0].pic} alt={memberData[0].name} />
+					<Pic className='pic' src={"/" + memberData[0].pic} />
 				</div>
 			</article>
 
@@ -31,7 +32,8 @@ export default function Members() {
 							return (
 								<li key={idx}>
 									<div className='pic'>
-										<img src={"/" + member.pic} alt={member.name} />
+										{/* 이미지 컴포넌트 호출후 src에 이미지 url값 전달, pic클래스에는 이미지의 크기정도만 지정 */}
+										<Pic src={member.pic} className='pic' shadow={true} />
 									</div>
 									<div className='txt'>
 										<h2>{member.name}</h2>
