@@ -33,7 +33,7 @@ export default function YoutubeDetail() {
 	// 해결방법: 처음 렌더링시 초기 상태값이 비어 있을때 오류해결 방법(Optional chaining)
 	return (
 		<Layout title={YoutubeVid?.snippet.title}>
-			<figure>
+			<figure className="vidFrame">
 				<iframe
 					width="100%"
 					height="100%"
