@@ -1,31 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "../common/Layout";
 
 export default function Youtube() {
-	const [Colors, setColors] = useState(["red", "green", "blue"]);
+	const [Num, setNum] = useState(0);
 
-	// state 값은 무조건 state변경함수를 통해서만 변경가능
-	// 변경할 값이 참조형자료이면 무조건 전개연산자를 통해서 완전 복사해서 state전용변경함수로 변경처리
-	const changeColor = () => {
-		const newColors = [...Colors];
-		newColors[0] = "hotpink";
-		setColors(newColors);
-	};
+	useEffect(() => {
+		// 의존성배열이 비어있는 useEffect안쪽의 콜백함수는 컴포넌트 마운트시 한번만 호출됨
+		// 무거운 데이터를 서버쪽에서부터 가져와야 될때
+		// window객체에 이벤트 연결시
+		console.log("Mounted");
+
+		return () => {
+			// clean-up함수 해당 컴포넌트 언마운트시 실행될 함수
+			// window객체에서 이벤트 연결 해제할때
+			console.log("UnMounted");
+		};
+	}, []);
+
+	useEffect(() => {
+		// 의존성배열에 등록된 Num값이 변경될때마다 useEffect안쪽의 콜백함수 호출됨.
+		// 특정 state값이 변경시마다 특정 코드 로직의 기능을 실행해야 될때
+		console.log("Num값 변경될때마다 호출");
+	}, [Num]);
 
 	return (
 		<Layout title={"YOUTUBE"}>
-			<button onClick={changeColor}>set New Color</button>
-
-			<ul>
-				{Colors.map((color, idx) => {
-					return (
-						// style={{ color:color }} 같은 프로퍼티명:변수명일때 color만 써도 됨.
-						<li style={{ color }} key={idx}>
-							{color}
-						</li>
-					);
-				})}
-			</ul>
+			<h2>{Num}</h2>
+			<button onClick={() => setNum(Num + 1)}>changeNum</button>
 		</Layout>
 	);
 }
+/*
+	useEffect(생명주기 관리함수 : 생성(Mount), 변경(ReRender), 소멸(UnMount))
+*/
