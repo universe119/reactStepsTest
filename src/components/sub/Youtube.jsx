@@ -34,10 +34,12 @@ export default function Youtube() {
 			{Vids.map((vid, idx) => {
 				return (
 					<article key={idx}>
-						<Pic className="thumb" src={vid.snippet.thumbnails.high.url} />
 						<h3>{shortenText(vid.snippet.title, 60)}</h3>
-						<p>{shortenText(vid.snippet.description, 150)}</p>
-						<span>{combineText(vid.snippet.publishedAt.split("T")[0], "-", ".")}</span>
+						<div className="txt">
+							<p>{shortenText(vid.snippet.description, 150)}</p>
+							<span>{combineText(vid.snippet.publishedAt.split("T")[0], "-", ".")}</span>
+						</div>
+						<Pic className="thumb" src={vid.snippet.thumbnails.high.url} />
 						{/* 내가한거<span>{combineText(vid.snippet.publishedAt, "-", ".")}</span> */}
 					</article>
 				);
@@ -46,6 +48,7 @@ export default function Youtube() {
 	);
 }
 
-// 미션 - useCombineText란 이름으로 날짜값을 변경해주는 함수
-// 함수명(전체문자열, 원본 구분자, 변경할 구분자)
-// 함수(2012-02-10, "-", ".") --> 2012.02.10
+// 미션
+// 해당 목록을 반응형 처리
+// 타블릿에서는 제목, txt박스 한줄 그밑에 이미지 배치하는 형태로 구현
+// 모바일에서는 모두 한줄로 구현
