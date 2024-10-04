@@ -7,6 +7,7 @@ import Gallery from "./components/sub/Gallery";
 import Members from "./components/sub/Members";
 import Posts from "./components/sub/Posts";
 import Youtube from "./components/sub/Youtube";
+import YoutubeDetail from "./components/sub/YoutubeDetail";
 
 export default function App() {
 	return (
@@ -18,6 +19,7 @@ export default function App() {
 				<Route path="/members" element={<Members />} />
 				<Route path="/gallery" element={<Gallery />} />
 				<Route path="/youtube" element={<Youtube />} />
+				<Route path="/youtube/:id" element={<YoutubeDetail />} />
 				<Route path="/contact" element={<Contact />} />
 				<Route path="/posts" element={<Posts />} />
 				{/* <Route path="/join" element={<Join />} /> */}
@@ -27,6 +29,12 @@ export default function App() {
 		</>
 	);
 }
+
+/*
+	다이나믹 라우터 (상세페이지 제작)
+	- 라우터 연걸시 path경로를 /패스명/:파라미터
+	- 특정 url경로 접속시 파라미터명으로 특정 값 전달
+*/
 
 /*
   SSR방식 (HTML파일 불러오는 방식)
