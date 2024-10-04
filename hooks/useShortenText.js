@@ -13,11 +13,7 @@
 */
 
 export default function useShortenText() {
-	//파라미터로 사용자 이름을 입력받아 콘솔문을 출력하는 함수자체를 반환
-	return user_name => {
-		console.log(`Hello ${user_name}`);
+	return (text, len) => {
+		return text.length > len ? text.substr(0, len) + "..." : text;
 	};
 }
-
-//미션
-//위의 규칙을 활용해서 인수로 문자값과 자를 글자수를 전달받아 말줄임표처리된 문자값을 반환하는 커스텀 훅 함수 형태로 제작
