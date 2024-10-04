@@ -4,7 +4,7 @@ export default function Pic({ src, className, shadow = false }) {
 	const shadowStyle = {
 		width: "100%",
 		height: "100%",
-		objectFict: "cover",
+		objectFit: "cover",
 		position: "absolute",
 		top: 20,
 		left: 20,
