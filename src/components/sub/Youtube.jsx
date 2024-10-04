@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import Layout from "../common/Layout";
 import Pic from "../common/Pic";
+import useShortenText from "../../../hooks/useShortenText";
 
 export default function Youtube() {
 	const [Vids, setVids] = useState([]);
 
+	const shortenText = useShortenText();
+	console.log(shortenText);
+
 	const fetchYoutube = () => {
+		shortenText("David");
 		const api_key = import.meta.env.VITE_YOUTUBE_API;
 		const pid = "PLbavOBDiF2ET3lP5KfSAKyfAH-8oVGPQm";
 		const num = 10;
