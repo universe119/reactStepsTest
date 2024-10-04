@@ -30,7 +30,7 @@ export default function Youtube() {
 				return (
 					<article key={idx}>
 						<Pic className="thumb" src={vid.snippet.thumbnails.high.url} />
-						<h3>{vid.snippet.title}</h3>
+						<h3>{vid.snippet.title.length >= 60 ? vid.snippet.title.substr(0, 60) + "..." : vid.snippet.title}</h3>
 						<p>{vid.snippet.description}</p>
 						<span>{vid.snippet.publishedAt}</span>
 					</article>
