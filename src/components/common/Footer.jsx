@@ -1,16 +1,16 @@
-export default function Footer(){
-  return(
-    <footer className='footer'>
-        <h1>ALPACO</h1>
-      <section>
-        <ul>
-          <li>FAMILY SITE</li>
+export default function Footer() {
+	return (
+		<footer className="footer">
+			<h1>ALPACO</h1>
+			<section>
+				<ul>
+					<li>FAMILY SITE</li>
 					<li>SITEMAP</li>
 					<li>CONTACT</li>
 					<li>POLICY</li>
-        </ul>
-        <p>2024 ALPACO &copy; ALL RIGHTS RESEVED.</p>
-      </section>
-    </footer>
-  );
+				</ul>
+				<p>2024 ALPACO &copy; ALL RIGHTS RESEVED.</p>
+			</section>
+		</footer>
+	);
 }

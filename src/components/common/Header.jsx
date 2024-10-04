@@ -8,12 +8,12 @@ export default function Header() {
 	const { pathname } = useLocation();
 
 	return (
-		<header className='header'>
+		<header className="header">
 			<h1>
 				<Link to={"/"}>ALPACO</Link>
 			</h1>
 			<nav>
-				<ul className='gnb'>
+				<ul className="gnb">
 					{gnbArr.map((data, idx) => {
 						return (
 							<li key={idx} className={pathname === "/" + data ? "on" : ""}>
@@ -23,7 +23,7 @@ export default function Header() {
 					})}
 				</ul>
 
-				<ul className='sns'>
+				<ul className="sns">
 					{snsArr.map((Data, idx) => (
 						<li key={idx}>
 							<Data />
@@ -31,7 +31,7 @@ export default function Header() {
 					))}
 				</ul>
 			</nav>
-			<FaBars className='btnMenuToggle' />
+			<FaBars className="btnMenuToggle" />
 		</header>
 	);
 }
