@@ -12,7 +12,7 @@ export default function Members() {
 					<p>{memberData[0].position}</p>
 				</div>
 				<div className='pic'>
-					<Pic className='pic' src={"/" + memberData[0].pic} />
+					<Pic className='pic' src={"/" + memberData[0].pic} shadow />
 				</div>
 			</article>
 
