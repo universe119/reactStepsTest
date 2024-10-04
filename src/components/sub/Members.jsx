@@ -11,9 +11,7 @@ export default function Members() {
 					<h2>{memberData[0].name}</h2>
 					<p>{memberData[0].position}</p>
 				</div>
-				<div className="pic">
-					<Pic className="pic" src={"/" + memberData[0].pic} shadow />
-				</div>
+				<Pic className="pic" src={"/" + memberData[0].pic} shadow />
 			</article>
 
 			<article className="memberListBox">
@@ -31,10 +29,8 @@ export default function Members() {
 						if (idx !== 0) {
 							return (
 								<li key={idx}>
-									<div className="pic">
-										{/* 이미지 컴포넌트 호출후 src에 이미지 url값 전달, pic클래스에는 이미지의 크기정도만 지정 */}
-										<Pic src={member.pic} className="pic" shadow={true} />
-									</div>
+									{/* 이미지 컴포넌트 호출후 src에 이미지 url값 전달, pic클래스에는 이미지의 크기정도만 지정 */}
+									<Pic src={member.pic} className="pic" shadow={true} />
 									<div className="txt">
 										<h2>{member.name}</h2>
 										<p>{member.position}</p>
