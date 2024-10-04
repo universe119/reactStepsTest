@@ -5,12 +5,12 @@ import Pic from "../common/Pic";
 export default function Youtube() {
 	const [Vids, setVids] = useState([]);
 
-	const api_key = "AIzaSyC0YTkwnKAxe7Th6bkOdlmS5uW4auLXs8s";
-	const pid = "PLbavOBDiF2ET3lP5KfSAKyfAH-8oVGPQm";
-	const num = 10;
-	const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${pid}&key=${api_key}&maxResults=${num}`;
+	const fetchYoutube = () => {
+		const api_key = import.meta.env.VITE_YOUTUBE_API;
+		const pid = "PLbavOBDiF2ET3lP5KfSAKyfAH-8oVGPQm";
+		const num = 10;
+		const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${pid}&key=${api_key}&maxResults=${num}`;
 
-	useEffect(() => {
 		fetch(url)
 			.then(data => data.json())
 			.then(json => {
@@ -18,6 +18,10 @@ export default function Youtube() {
 
 				setVids(json.items);
 			});
+	};
+
+	useEffect(() => {
+		fetchYoutube();
 	}, []);
 
 	return (
