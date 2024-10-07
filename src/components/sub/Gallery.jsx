@@ -5,7 +5,9 @@ import Modal from "../common/Modal";
 
 export default function Gallery() {
 	const [Flickr, setFlickr] = useState([]);
-	console.log(Flickr);
+	// console.log(Flickr);
+	//모달 컴포넌트 출력여부를 결정할 state생성
+	const [ModalOpen, setModalOpen] = useState(false);
 
 	useEffect(() => {
 		// people에 flickr.people.getPhotos메서드 연결
@@ -27,7 +29,7 @@ export default function Gallery() {
 				<section className="galleryList">
 					{Flickr.map((data, idx) => {
 						return (
-							<article key={idx}>
+							<article key={idx} onClick={() => setModalOpen(true)}>
 								<Pic
 									src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_z.jpg`}
 									className="pic"
@@ -40,7 +42,8 @@ export default function Gallery() {
 				</section>
 			</Layout>
 
-			<Modal>FLICKR IMAGE</Modal>
+			{/* ModalOpen 상태값이 true일때에만 Modal컴포넌트를 호출해서 출력 */}
+			{ModalOpen && <Modal>FLICKR IMAGE</Modal>}
 		</>
 	);
 }
