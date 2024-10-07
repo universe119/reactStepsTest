@@ -25,6 +25,10 @@ export default function Gallery() {
 				{Flickr.map((data, idx) => {
 					return (
 						<article key={idx}>
+							<img
+								src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_z.jpg`}
+								alt={data.title}
+							/>
 							<h3>{data.title}</h3>
 						</article>
 					);
