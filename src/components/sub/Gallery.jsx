@@ -49,7 +49,8 @@ export default function Gallery() {
 	);
 }
 
-//미션 (2시 30분까기 고민)
-//자식 컴포넌트인 Modal안쪽에서 닫기 버튼 클릭시 부모에 있는 ModalOpen이라는 상태값을 false로 변경해서 모달창 닫는 로직 고민
-//리액트에서 데이터는 부모에서 자식으로 데이터를 전달할 수 있는 단방향 데이터 방식임을 유의
-//부모에서 Modal이란 컴포넌트에 어떤형태의 정보를 전달해야지 자식에서 해당 정보를 바탕으로 자기 자신을 언마운트 처리할지를 고민
+/*
+	미션 (3시 20분까지)
+	- 모달창 생성시 document.body.style.overflow= 'hidden'으로 처리해서 스크롤기능 비활성화처리
+	- 모달창 제거시 document.body.style.overflow='auto'로 처리해서 스크롤기능 다시 활성화
+*/
