@@ -9,6 +9,9 @@ export default function Gallery() {
 	//모달 컴포넌트 출력여부를 결정할 state생성
 	const [ModalOpen, setModalOpen] = useState(false);
 
+	//클릭한 목록요소의 순번을 담을 상태값 생성
+	const [Index, setIndex] = useState(0);
+
 	useEffect(() => {
 		// people에 flickr.people.getPhotos메서드 연결
 		const method = "flickr.people.getPhotos";
@@ -38,7 +41,14 @@ export default function Gallery() {
 				<section className="galleryList">
 					{Flickr.map((data, idx) => {
 						return (
-							<article key={idx} onClick={() => setModalOpen(true)}>
+							<article
+								key={idx}
+								onClick={() => {
+									setModalOpen(true);
+
+									//각 이미지 목록 클릭시 클릭한 idx순번값을 Index상태값에 저장
+									setIndex(idx);
+								}}>
 								<Pic
 									src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_z.jpg`}
 									className="pic"
@@ -53,7 +63,28 @@ export default function Gallery() {
 
 			{/* ModalOpen 상태값이 true일때에만 Modal컴포넌트를 호출해서 출력 */}
 			{/* 자식 컴포넌트인 모달 안쪽에서 부모인 ModalOpen상태값을 변경해야 되기 때문에 상태변경함수 자체를 전달 */}
-			{ModalOpen && <Modal setModalOpen={setModalOpen}>FLICKR IMAGE</Modal>}
+			{ModalOpen && (
+				<Modal setModalOpen={setModalOpen}>
+					<Pic
+						// Pic컴포넌트 src값으로 Flickr 전체배열에서 Index상태 순번의 정보값으로 _b 접미사의 큰 이미지 주소를 Pic에 전달해서 호출
+						src={`https://live.staticflickr.com/${Flickr[Index].server}/${Flickr[Index].id}_${Flickr[Index].secret}_b.jpg`}
+						shadow
+					/>
+				</Modal>
+			)}
 		</>
 	);
 }
+
+/*
+미션 (3시 40분까지)
+- 클릭이벤트가 발생하는 각각의 article요소에 모달안에 출력되야 되는 큰 이미지 url정보값을 속성값 이용해 숨김
+- 아티클요소 클릭하는 순간 미리 숨겨논 이미지 url정보값을 Modal안쪽에 Pic컴포넌트 호출하면서 src 속성 전달
+
+--> 플로우 다시 수정 
+모달안에 반복 이벤트가 발생한 순번의 요소의 정보를 출력하는 패턴
+1. 순서값을 저장할 상태값 생성
+2. 반복 요소에 이벤트 발생시 이벤트가 발생한 요소의 순서값을 상태값에 저장
+3. 모달 안쪽에서 출력해야되는 정보를 순서 상태값에 연동처리
+
+*/
