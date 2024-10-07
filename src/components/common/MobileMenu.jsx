@@ -1,3 +1,3 @@
 export default function MobileMenu() {
-	return <div className="mobileMenu">MobileMenu</div>;
+	return <aside className="mobileMenu">MobileMenu</aside>;
 }
