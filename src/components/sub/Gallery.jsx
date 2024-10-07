@@ -15,7 +15,7 @@ export default function Gallery() {
 		fetch(url)
 			.then(data => data.json())
 			.then(json => {
-				console.log(json.photos.photo);
+				setFlickr(json.photos.photo);
 			});
 	}, []);
 
