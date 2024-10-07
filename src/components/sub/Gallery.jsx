@@ -4,6 +4,8 @@ import Pic from "../common/Pic";
 import Modal from "../common/Modal";
 
 export default function Gallery() {
+	console.log("Rendered");
+
 	const [Flickr, setFlickr] = useState([]);
 	// console.log(Flickr);
 	//모달 컴포넌트 출력여부를 결정할 state생성
@@ -44,6 +46,11 @@ export default function Gallery() {
 							<article
 								key={idx}
 								onClick={() => {
+									//해당 요소 클릭시마다 핸들러함수 안쪽에서 ModalOpen, Index라는 2개의 상태값이 동시에 변경이 되지만 실제 컴포넌트는 한번만 재렌더링 됨
+									//리액트 18이전까지는 AutoBatching 기능이 지원안되서 같은 렌더링 사이클에서 복수개의 상태값 변경시 변경되는 상태값의 갯수만큼 재렌더링 됨
+
+									// 리액트 18버전부터 AutoBatching 기능 지원됨
+									// 특정 렌더링 사이클에서 복수개의 상태값이 변경되더라도 해당 상태값들을 Batching(그룹화) 처리해 한번만 재렌더링 처리
 									setModalOpen(true);
 
 									//각 이미지 목록 클릭시 클릭한 idx순번값을 Index상태값에 저장
