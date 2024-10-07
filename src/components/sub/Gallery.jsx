@@ -43,19 +43,13 @@ export default function Gallery() {
 			</Layout>
 
 			{/* ModalOpen 상태값이 true일때에만 Modal컴포넌트를 호출해서 출력 */}
-			{ModalOpen && <Modal>FLICKR IMAGE</Modal>}
+			{/* 자식 컴포넌트인 모달 안쪽에서 부모인 ModalOpen상태값을 변경해야 되기 때문에 상태변경함수 자체를 전달 */}
+			{ModalOpen && <Modal setModalOpen={setModalOpen}>FLICKR IMAGE</Modal>}
 		</>
 	);
 }
 
-/*
-useState, useEffect 훅을 활용해서 외부 서버데이터를 가져오고 컴포넌트에 렌더링하는 패턴
-1. 외부데이터를 담을 State와 State변경함수를 useState로 부터 생성
-2. 의존성 배열이 비어있는 useEffect구문 생성 (서버데이터는 컴포넌트 초기 렌더리시 한번만 가져오는 것이 일반적)
-3. useEffect구문 안쪽에서 데이터를 요청 URL을 생성하기 위한 정보값 변수에 담기
-4. useEffect구문 안쪽에서 완성된 요청 URL로 fetch함수를 통해 데이터 요청
-4-1.만약 제대로 url요청을 했음에도 불구하고 콘솔에러로 'not Valid JSON'에러 뜰시 다음의 쿼리스트링 옵션을 뒤에 추가
-4-2. nojsoncallback=1&format=json;
-5. fetch함수의 then구문 안에서 전달받은 서버데이터로부터 배열만 뽑아서 미리 준비해놓은 State변경함수로 담기
-6. return문 안쪽에서 State값을 map으로 반복돌며 원하는 형태의 JSX로 출력
-*/
+//미션 (2시 30분까기 고민)
+//자식 컴포넌트인 Modal안쪽에서 닫기 버튼 클릭시 부모에 있는 ModalOpen이라는 상태값을 false로 변경해서 모달창 닫는 로직 고민
+//리액트에서 데이터는 부모에서 자식으로 데이터를 전달할 수 있는 단방향 데이터 방식임을 유의
+//부모에서 Modal이란 컴포넌트에 어떤형태의 정보를 전달해야지 자식에서 해당 정보를 바탕으로 자기 자신을 언마운트 처리할지를 고민
