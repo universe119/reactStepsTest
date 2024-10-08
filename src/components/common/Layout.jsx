@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import useSplitText from "../../hooks/useSplitText";
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function Layout({ title, children }) {
 	//커스텀훅으로 핸들러함수 안쪽에서 호출할 수 있는 실제사용가능한 함수 반환 받음
@@ -19,7 +20,13 @@ export default function Layout({ title, children }) {
 		<main className={isDetail ? "detail" : title.toLowerCase()}>
 			<h1 ref={ref_title}>{title}</h1>
 
-			<section>{children}</section>
+			<motion.section
+				initial={{ opacity: 0, y: 200 }}
+				animate={{ opacity: 1, y: 0 }}
+				exit={{ opacity: 0, y: 200, transition: { delay: 0 } }}
+				transition={{ duration: 1, delay: 0.7 }}>
+				{children}
+			</motion.section>
 		</main>
 	);
 }
