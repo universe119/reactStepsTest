@@ -20,7 +20,7 @@ export default function useSplitText() {
 		//문자열을 반복돌면서 동적으로 <span>으로 감싸면서 문자열 쌓아나감
 		for (let letter of text) {
 			tags += `<span style='display:inline-block; transition-duration:0.5s; transition-delay:${
-				count * interval + delay
+				count * interval + delay //반복순번 * 모션시간 간격, 초기 지연시간
 			}s'>${letter}</span>`;
 			count++;
 		}

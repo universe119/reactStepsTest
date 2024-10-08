@@ -11,8 +11,8 @@ export default function Layout({ title, children }) {
 	const isDetail = pathname.includes("/youtube/");
 
 	useEffect(() => {
-		//훅 자체적으로 참조객체 요소 활성화 처리
-		splitText(ref_title, 0.1, 2);
+		// 전달한 인수가 3개 이상일때는 객체형식으로 전달
+		splitText(ref_title, 0.1, 0.1);
 	}, []);
 
 	return (
