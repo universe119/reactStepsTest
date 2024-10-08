@@ -7,7 +7,8 @@
 // 렉시컬 스코프환경이 설정됨
 // 렉시컬 스코프 환경 : 안쪽의 지역변수가 계속 값이 유지되는 현상
 
-export default function UseSplitText() {
+export default function useSplitText() {
+	//내부적으로 current값을 직접 추출하기때문에 호출시 참조객체명만 전달
 	return ref => {
 		//인수로 전달받은 참조객체안의 요소의 텍스트만 가져옴
 		let text = ref.current.innerText;
