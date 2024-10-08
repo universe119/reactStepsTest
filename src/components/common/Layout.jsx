@@ -30,7 +30,7 @@ export default function Layout({ title, children }) {
 			</MaskText>
 			<br />
 
-			<MaskText duration={0.6} delay={1} color={"red"} style={{ marginTop: 50, fontSize: 80, fontFamily: "raleway" }}>
+			<MaskText duration={0.6} delay={1} color={"#555"} style={{ marginTop: 50, fontSize: 80, fontFamily: "raleway" }}>
 				Lorem ipsum dolor sit, amet consectetur adipisicing.
 			</MaskText>
 

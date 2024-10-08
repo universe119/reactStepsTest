@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function MaskText({ children, duration = 0, delay = 0, color = "#555", style }) {
+export default function MaskText({ children, duration = 0.5, delay = 0, color = "#000", style }) {
 	//기본 스타일 객체
 	const frameStyle = {
 		fontSize: "1.2rem",

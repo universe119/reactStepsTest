@@ -2,6 +2,7 @@ import Layout from "../common/Layout";
 import memberData from "../../data/memberData";
 import Pic from "../common/Pic";
 import { useRef, useState } from "react";
+import MaskBox from "../common/MaskBox";
 
 /*
 	참조객체에 가상돔을 담아 활용하는 패턴
@@ -34,13 +35,15 @@ export default function Members() {
 					<h2>{memberData[0].name}</h2>
 					<p>{memberData[0].position}</p>
 				</div>
-				<Pic className="pic" src={"/" + memberData[0].pic} shadow />
+				<MaskBox style={{ width: "50%", height: "65vh" }} delay={2}>
+					<Pic className="pic" src={"/" + memberData[0].pic} shadow />
+				</MaskBox>
 			</article>
 
 			<article className="memberListBox">
 				<div className="titBox">
-					<h2 onClick={changeRef}>Our Team Members</h2>
-					<p onClick={changeState}>
+					<h2>Our Team Members</h2>
+					<p>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora possimus non ipsa cum. Veritatis, dolore
 						aliquam? Consectetur assumenda dolor labore.
 					</p>
