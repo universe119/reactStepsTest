@@ -4,15 +4,16 @@ import { useEffect, useRef } from "react";
 
 export default function Layout({ title, children }) {
 	//커스텀훅으로 핸들러함수 안쪽에서 호출할 수 있는 실제사용가능한 함수 반환 받음
+	const ref_title = useRef(null);
+
 	const splitText = useSplitText();
 	const { pathname } = useLocation();
 	const isDetail = pathname.includes("/youtube/");
 
-	const ref_title = useRef(null);
-
 	useEffect(() => {
-		splitText(ref_title);
-	}, [[]]);
+		//훅 자체적으로 참조객체 요소 활성화 처리
+		splitText(ref_title, 0.1);
+	}, []);
 
 	return (
 		<main className={isDetail ? "detail" : title.toLowerCase()}>
