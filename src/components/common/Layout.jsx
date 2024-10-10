@@ -25,12 +25,12 @@ export default function Layout({ title, children }) {
 		<main className={isDetail ? "detail" : title.toLowerCase()}>
 			<h1 ref={ref_title}>{title}</h1>
 
-			<MaskText duration={1} delay={0} color={"#000"}>
+			<MaskText duration={0.5} delay={0} color={"#444"} style={{ fontSize: 20, fontFamily: "arial" }}>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, ad.
 			</MaskText>
 			<br />
 
-			<MaskText duration={0.6} delay={1} color={"#555"} style={{ marginTop: 50, fontSize: 80, fontFamily: "raleway" }}>
+			<MaskText duration={0.6} delay={0.6} color={"#444"} style={{ marginBottom: 120 }}>
 				Lorem ipsum dolor sit, amet consectetur adipisicing.
 			</MaskText>
 

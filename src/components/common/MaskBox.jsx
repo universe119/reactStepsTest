@@ -24,7 +24,7 @@ export default function MaskBox({ children, duration = 0.5, delay = 0, color = "
 				{children}
 			</motion.div>
 			<motion.div
-				style={maskStyle}
+				style={{ ...maskStyle, ...style }}
 				initial={{ x: "-101%" }}
 				animate={{ x: "101%" }}
 				transition={{ duration, delay, ease: "linear" }}></motion.div>
