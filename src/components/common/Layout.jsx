@@ -16,7 +16,6 @@ export default function Layout({ title, children }) {
 				{/* <h1 ref={ref_title}>{title}</h1>
 				 */}
 				<SplitText delay={0.5}>{title}</SplitText>
-				<br />
 
 				{/* 마스크 순번3 - 텍스트 타이핑 모션 끝날 시점에 첫줄 텍스트 마스크 모션 시작 */}
 				<MaskText delay={1} color={"#444"} style={{ fontSize: 20, fontFamily: "arial" }}>
