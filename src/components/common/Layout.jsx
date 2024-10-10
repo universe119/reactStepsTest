@@ -13,8 +13,10 @@ export default function Layout({ title, children }) {
 				</motion.h1> 내가 잠깐 만들어봤지만 성능면에서 별로였던 코드*/}
 				{/* <h1 ref={ref_title}>{title}</h1>
 				 */}
-				<SplitText delay={0.5}>{title}</SplitText>
-				<section>{children}</section>
+				<SplitText delay={0.5}>
+					{title}
+					<section>{children}</section>
+				</SplitText>
 			</main>
 
 			{/* 마스크 순번1 - 페이지 전환시 바로 전체화면을 가리는 마스크모션 실행 */}
