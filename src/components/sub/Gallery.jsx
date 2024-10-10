@@ -15,6 +15,12 @@ export default function Gallery() {
 	//클릭한 목록요소의 순번을 담을 상태값 생성
 	const [Index, setIndex] = useState(0);
 
+	// Gallery페이지에만 전용으로 동작할 커스텀 모션 객체 생성
+	const customMotion = {
+		init: { opacity: 0, x: 200 },
+		active: { opacity: 1, x: 0 },
+		end: { opacity: 0, x: -200, transition: { delay: 0 } }
+	};
 	useEffect(() => {
 		// people에 flickr.people.getPhotos메서드 연결
 		const method = "flickr.people.getPhotos";
@@ -41,7 +47,8 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={"GALLERY"}>
-				<Content delay={1.5}>
+				{/* Content호출시 위에서 준비한 전용 모션 정보 props로 전달 */}
+				<Content delay={1.5} customMotion={customMotion}>
 					<section className="galleryList">
 						{Flickr.map((data, idx) => {
 							return (
