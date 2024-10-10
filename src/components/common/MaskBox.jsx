@@ -10,10 +10,10 @@ export default function MaskBox({ children, duration = 0.5, delay = 0, color = "
 	};
 
 	//motion options
-	const motionBox = {
-		in: { opacity: 0 },
-		on: { opacity: 1 },
-		out: { opacity: 0, transition: { delay: 0 } },
+	const { init, active, end, time } = {
+		init: { opacity: 0 },
+		active: { opacity: 1 },
+		end: { opacity: 0, transition: { delay: 0 } },
 		time: { duration: 0.01, delay: duration / 2 + delay }
 	};
 
@@ -22,11 +22,10 @@ export default function MaskBox({ children, duration = 0.5, delay = 0, color = "
 			{/* children으로 전달된 요소가 block요소이기 때문 내부 wrapper요소도 div처리 */}
 			<motion.div
 				style={{ width: "100%", height: "100%" }}
-				variants={motionBox}
-				initial="in"
-				animate="on"
-				exit="out"
-				transition={motionBox.time}>
+				initial={init}
+				animate={active}
+				exit={end}
+				transition={time}>
 				{children}
 			</motion.div>
 
