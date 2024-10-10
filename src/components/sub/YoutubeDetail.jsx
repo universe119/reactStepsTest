@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../common/Layout";
 import { useEffect, useState } from "react";
 import useCombineText from "../../hooks/useCombineText";
+import Content from "../common/Content";
 
 export default function YoutubeDetail() {
 	//해당 컴포넌트 2번 재랜더링됨
@@ -35,15 +36,17 @@ export default function YoutubeDetail() {
 	// 해결방법: 처음 렌더링시 초기 상태값이 비어 있을때 오류해결 방법(Optional chaining)
 	return (
 		<Layout title={YoutubeVid?.snippet.title}>
-			<figure className="vidFrame">
-				<iframe
-					width="100%"
-					height="100%"
-					title="youtube"
-					src={`https://www.youtube.com/embed/${YoutubeVid?.snippet.resourceId.videoId}`}></iframe>
-			</figure>
-			<p>{YoutubeVid?.snippet.description}</p>
-			<span>{combineText(YoutubeVid?.snippet.publishedAt.split("T")[0], "-", ".")}</span>
+			<Content delay={1}>
+				<figure className="vidFrame">
+					<iframe
+						width="100%"
+						height="100%"
+						title="youtube"
+						src={`https://www.youtube.com/embed/${YoutubeVid?.snippet.resourceId.videoId}`}></iframe>
+				</figure>
+				<p>{YoutubeVid?.snippet.description}</p>
+				<span>{combineText(YoutubeVid?.snippet.publishedAt.split("T")[0], "-", ".")}</span>
+			</Content>
 		</Layout>
 	);
 }

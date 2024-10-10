@@ -30,7 +30,7 @@ export default function Members() {
 
 					{/* MaskBox 안쪽에 Pic요소가 들어갈 경우 shadow속성 적용 불가: Mask frame자체가 내부 요소를 overflow:hidden 처리하기 때문 */}
 					{/* 마스크 순번5_1. 이미지도 같이 표시하기 위해 딜레이 같게 1.5 설정 */}
-					<MaskBox style={{ width: "50%", height: "65vh" }} delay={2 + 1}>
+					<MaskBox style={{ width: "50%", height: "65vh" }} delay={1}>
 						{/* 직접 style객체를 props로 전달하여 불필요한 scss구문 추가 없이 스타일 적용 */}
 						<Pic style={{ width: "100%", height: "100%" }} className="pic" src={"/" + memberData[0].pic} />
 					</MaskBox>

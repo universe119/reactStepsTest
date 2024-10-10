@@ -4,6 +4,7 @@ import Pic from "../common/Pic";
 import useShortenText from "../../hooks/useShortenText";
 import useCombineText from "../../hooks/useCombineText";
 import { Link } from "react-router-dom";
+import Content from "../common/Content";
 
 export default function Youtube() {
 	const [Vids, setVids] = useState([]);
@@ -32,21 +33,23 @@ export default function Youtube() {
 
 	return (
 		<Layout title={"YOUTUBE"}>
-			{Vids.map((vid, idx) => {
-				return (
-					<article key={idx}>
-						<h3>
-							<Link to={"/youtube/" + vid.id}>{shortenText(vid.snippet.title, 60)}</Link>
-						</h3>
-						<div className="txt">
-							<p>{shortenText(vid.snippet.description, 150)}</p>
-							<span>{combineText(vid.snippet.publishedAt.split("T")[0], "-", ".")}</span>
-						</div>
-						<Pic className="thumb" src={vid.snippet.thumbnails.high.url} />
-						{/* 내가한거<span>{combineText(vid.snippet.publishedAt, "-", ".")}</span> */}
-					</article>
-				);
-			})}
+			<Content delay={1}>
+				{Vids.map((vid, idx) => {
+					return (
+						<article key={idx}>
+							<h3>
+								<Link to={"/youtube/" + vid.id}>{shortenText(vid.snippet.title, 60)}</Link>
+							</h3>
+							<div className="txt">
+								<p>{shortenText(vid.snippet.description, 150)}</p>
+								<span>{combineText(vid.snippet.publishedAt.split("T")[0], "-", ".")}</span>
+							</div>
+							<Pic className="thumb" src={vid.snippet.thumbnails.high.url} />
+							{/* 내가한거<span>{combineText(vid.snippet.publishedAt, "-", ".")}</span> */}
+						</article>
+					);
+				})}
+			</Content>
 		</Layout>
 	);
 }

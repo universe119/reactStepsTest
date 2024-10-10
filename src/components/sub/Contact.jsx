@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Layout from "../common/Layout";
+import Content from "../common/Content";
 
 export default function Contact() {
 	//순서1: 서버쪽에서 받아올 데이터를 담을 빈 배열 state공간 및 함수 생성
@@ -18,14 +19,16 @@ export default function Contact() {
 
 	return (
 		<Layout title={"CONTACT"}>
-			{Data.map((data, idx) => {
-				return (
-					// 순서4:반복시 무조건 idx로 키값 설정
-					<article key={idx}>
-						<h2>{data.name}</h2>
-					</article>
-				);
-			})}
+			<Content delay={1}>
+				{Data.map((data, idx) => {
+					return (
+						// 순서4:반복시 무조건 idx로 키값 설정
+						<article key={idx}>
+							<h2>{data.name}</h2>
+						</article>
+					);
+				})}
+			</Content>
 		</Layout>
 	);
 }
