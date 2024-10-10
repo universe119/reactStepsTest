@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Mask from "./Mask";
 
 export default function MaskText({ children, duration = 0.5, delay = 0, color = "#000", style }) {
 	//component styles
@@ -11,13 +12,6 @@ export default function MaskText({ children, duration = 0.5, delay = 0, color = 
 		overflow: "hidden",
 		marginBottom: 10
 	};
-	const maskStyle = {
-		width: "100%",
-		height: "100%",
-		position: "absolute",
-		top: 0,
-		backgroundColor: color
-	};
 
 	// span text motion styles
 	const spanMotion = {
@@ -26,12 +20,7 @@ export default function MaskText({ children, duration = 0.5, delay = 0, color = 
 		out: { opacity: 0, transition: { delay: 0 } },
 		time: { duration: 0.01, delay: duration / 2 + delay }
 	};
-	// mask motion
-	const maskMotion = {
-		in: { x: "-101%" },
-		on: { x: "101%" },
-		time: { duration, delay }
-	};
+
 	return (
 		// 텍스트를 감싸주는 Wrapper
 		// 해당 모션 컴포넌트의 스타일을 부모컴포넌트에 호출시 편하게 변경처리 하기 위해서 전달받은 style 객체로 기존 style 객체 덮어씀
@@ -42,12 +31,7 @@ export default function MaskText({ children, duration = 0.5, delay = 0, color = 
 			</motion.span>
 
 			{/* wrapper 안쪽에 실제 텍스트를 가려줄 마스크오소 */}
-			<motion.div
-				style={maskStyle}
-				variants={maskMotion}
-				initial="in"
-				animate="on"
-				transition={maskMotion.time}></motion.div>
+			<Mask duration={duration} delay={delay} color={color} />
 		</div>
 	);
 }
