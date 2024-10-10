@@ -26,17 +26,17 @@ export default function MaskText({ children, duration = 0.5, delay = 0, color = 
 		out: { opacity: 0, transition: { delay: 0 } },
 		time: { duration: 0.1, delay: duration / 2 + delay }
 	};
-
 	// mask motion
 	const maskMotion = {
 		in: { x: "-101%" },
 		on: { x: "101%" },
 		time: { duration, delay }
 	};
+
 	return (
 		// 텍스트를 감싸주는 Wrapper
 		// 해당 모션 컴포넌트의 스타일을 부모컴포넌트에 호출시 편하게 변경처리 하기 위해서 전달받은 style 객체로 기존 style 객체 덮어씀
-		<div style={{ frameStyle, ...style }}>
+		<div style={{ ...frameStyle, ...style }}>
 			{/* children으로 전달된 실제 텍스트를 span으로 wrapping처리 */}
 			<motion.span variants={spanMotion} initial="in" animate="on" exit="out" transition={spanMotion.time}>
 				{children}
@@ -51,9 +51,3 @@ export default function MaskText({ children, duration = 0.5, delay = 0, color = 
 		</div>
 	);
 }
-
-/*
-미션
-- MaskBox.jsx 라는 새로운 컴포넌트 생성
-- 이미지나 그룹덩어리의 박스요소에 마스크 모션처리
-*/

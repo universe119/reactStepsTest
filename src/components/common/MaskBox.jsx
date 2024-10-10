@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 export default function MaskBox({ children, duration = 0.5, delay = 0, color = "#000", style }) {
-	//기본 스타일 객체
+	// 기본 스타일 객체
 	const frameStyle = {
 		display: "inline-block",
 		position: "relative",
@@ -13,26 +13,33 @@ export default function MaskBox({ children, duration = 0.5, delay = 0, color = "
 		top: 0,
 		backgroundColor: color
 	};
+
+	// motion options
+	const motionBox = {
+		in: { opacity: 0 },
+		on: { opacity: 1 },
+		out: { opacity: 0, transition: { delay: 0 } },
+		time: { duration: 0.01, delay: duration / 2 + delay }
+	};
+
 	return (
 		<div style={{ ...frameStyle, ...style }}>
+			{/* children으로 전달된 요소가 block요소이기 때문 내부 wrapper요소도 div처리 */}
 			<motion.div
+				variants={motionBox}
 				style={{ width: "100%", height: "100%" }}
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				exit={{ opacity: 0, transition: { delay: 0 } }}
-				transition={{ duration: 0.01, delay: duration / 2 + delay }}>
+				initial="in"
+				animate="on"
+				exit="out"
+				transition={motionBox.time}>
 				{children}
 			</motion.div>
+
 			<motion.div
-				style={{ ...maskStyle, ...style }}
+				style={{ maskStyle }}
 				initial={{ x: "-101%" }}
 				animate={{ x: "101%" }}
 				transition={{ duration, delay, ease: "linear" }}></motion.div>
 		</div>
 	);
 }
-/*
-  미션 (5시 30분 까지)
-  - MaskBox.jsx 라는 새로운 컴포넌트 생성
-  - 이미지나 그룹덩어리의 박스요소에 마스크모션 처리
-*/

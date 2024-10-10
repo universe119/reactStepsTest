@@ -1,7 +1,6 @@
 import Layout from "../common/Layout";
 import memberData from "../../data/memberData";
 import Pic from "../common/Pic";
-import { useRef, useState } from "react";
 import MaskBox from "../common/MaskBox";
 
 /*
@@ -11,22 +10,6 @@ import MaskBox from "../common/MaskBox";
 	3. 참조객체명.current 로 해당요소를 가져와서 제어
 */
 export default function Members() {
-	console.log("Member rendered");
-
-	const refEl = useRef(0);
-	const [Num, setNum] = useState(0);
-
-	const changeRef = () => {
-		console.log("changeRef called");
-
-		refEl.current = 1;
-	};
-	const changeState = () => {
-		console.log("changeState called");
-
-		setNum(Num + 1);
-	};
-
 	return (
 		<Layout title={"MEMBERS"}>
 			{/* 첫번째 데이터만 뽑아서 출력 */}
@@ -35,8 +18,10 @@ export default function Members() {
 					<h2>{memberData[0].name}</h2>
 					<p>{memberData[0].position}</p>
 				</div>
-				<MaskBox style={{ width: "50%", height: "65vh" }} delay={2}>
-					<Pic className="pic" src={"/" + memberData[0].pic} shadow />
+
+				{/* MaskBox 안쪽에 Pic요소가 들어갈 경우 shadow속성 적용 불가: Mask frame자체가 내부 요소를 overflow:hidden 처리하기 때문 */}
+				<MaskBox style={{ width: "50%", height: "65vh" }} delay={1}>
+					<Pic style={{ width: "100%", height: "100%" }} className="pic" src={"/" + memberData[0].pic} />
 				</MaskBox>
 			</article>
 
