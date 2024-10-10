@@ -3,6 +3,7 @@ import useSplitText from "../../hooks/useSplitText";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import MaskText from "./MaskText";
+import Mask from "./Mask";
 
 export default function Layout({ title, children }) {
 	//커스텀훅으로 핸들러함수 안쪽에서 호출할 수 있는 실제사용가능한 함수 반환 받음
@@ -22,26 +23,31 @@ export default function Layout({ title, children }) {
 	}, []);
 
 	return (
-		<main className={isDetail ? "detail" : title.toLowerCase()}>
-			<h1 ref={ref_title}>{title}</h1>
+		<>
+			<main className={isDetail ? "detail" : title.toLowerCase()}>
+				<h1 ref={ref_title}>{title}</h1>
 
-			<MaskText duration={0.5} delay={0} color={"#444"} style={{ fontSize: 20, fontFamily: "arial" }}>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, ad.
-			</MaskText>
-			<br />
+				<MaskText duration={0.5} delay={0} color={"#444"} style={{ fontSize: 20, fontFamily: "arial" }}>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, ad.
+				</MaskText>
+				<br />
 
-			<MaskText duration={0.6} delay={0.6} color={"#444"} style={{ marginBottom: 120 }}>
-				Lorem ipsum dolor sit, amet consectetur adipisicing.
-			</MaskText>
+				<MaskText duration={0.6} delay={0.6} color={"#444"} style={{ marginBottom: 120 }}>
+					Lorem ipsum dolor sit, amet consectetur adipisicing.
+				</MaskText>
 
-			<motion.section
-				initial={{ opacity: 0, y: 200 }}
-				animate={{ opacity: 1, y: 0 }}
-				exit={{ opacity: 0, y: 200, transition: { delay: 0 } }}
-				transition={{ duration: 0.5, delay: 0.3, ease: "linear" }}>
-				{children}
-			</motion.section>
-		</main>
+				<motion.section
+					initial={{ opacity: 0, y: 200 }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: 200, transition: { delay: 0 } }}
+					transition={{ duration: 0.5, delay: 0.3, ease: "linear" }}>
+					{children}
+				</motion.section>
+			</main>
+
+			{/* 다른 요소와는 다르게 전체 페이지를 덮을 때에는 Mask요소가 브라우저를 기준으로 위치가 배치가되야 하므로 기존 absolute에서 fixed속성으로 변경 */}
+			<Mask style={{ position: "fixed" }} />
+		</>
 	);
 }
 

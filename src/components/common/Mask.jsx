@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function Mask({ duration = 0.5, delay = 0, color = "#000" }) {
+export default function Mask({ duration = 0.5, delay = 0, color = "#000", style }) {
 	const maskStyle = {
 		width: "100%",
 		height: "100%",
@@ -15,7 +15,8 @@ export default function Mask({ duration = 0.5, delay = 0, color = "#000" }) {
 	};
 	return (
 		<motion.div
-			style={maskStyle}
+			//마스크 호출시 스타일 수정 가능하도록 처리
+			style={{ ...maskStyle, ...style }}
 			variants={maskMotion}
 			initial="in"
 			animate="on"
